@@ -1,13 +1,35 @@
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
-$(function () {
+window.onload = displayClock();
+
+var hourBlockInput = $('#')
+
+// function for displaying clock and updating it every second
+
+function displayClock() {
+  var currentDay = dayjs().format('MMM DD, YYYY, hh:mm:ss a');
+  var display = new Date().toLocaleTimeString();
+  $('#dayTime').text(currentDay);
+  setTimeout(displayClock, 1000);
+}
+
+
+
+$(function handleSave (event) {
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
   // function? How can DOM traversal be used to get the "hour-x" id of the
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
+
+  $('.saveBtn').on('click'), function(params) {
+    console.log('this is what i clicked ${$(this)}');
+      var id = $(this).parent().attr('id');
+    
+    }
+
   //
   // TODO: Add code to apply the past, present, or future class to each time
   // block by comparing the id to the current hour. HINTS: How can the id
@@ -21,3 +43,4 @@ $(function () {
   //
   // TODO: Add code to display the current date in the header of the page.
 });
+
